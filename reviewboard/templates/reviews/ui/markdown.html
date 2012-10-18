@@ -1,0 +1,17 @@
+{% extends base_template %}
+{% load i18n %}
+{% load reviewtags %}
+
+{% block title %}{% trans "Markdown" %}{% endblock %}
+
+{% block scripts-post %}
+{{block.super}}
+
+<script language="javascript">
+    $(document).ready(function() { });
+</script>
+{% endblock %}
+
+{% block review_ui_content %}
+<div id="markdown-review-ui-container"></div>
+{% endblock %}
