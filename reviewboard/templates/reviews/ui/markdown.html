@@ -10,7 +10,10 @@
 <script language="javascript">
     $(document).ready(function() {
         var view = new RB.MarkdownReviewableView({
-            model: new RB.MarkdownReviewable({})
+            model: new RB.MarkdownReviewable({
+                caption: '{{markdown.caption}}',
+                attachmentID: '{{markdown.id}}',
+            })
         });
 
         view.render();

@@ -4,9 +4,6 @@
 RB.MarkdownReviewableView = RB.AbstractReviewableView.extend({
     className: 'markdown-review-ui',
 
-    commentBlockView: {},
-    commentsListName: '',
-
     /*
      * Initializes the view.
      */
