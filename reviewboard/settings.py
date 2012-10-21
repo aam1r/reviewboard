@@ -299,6 +299,7 @@ PIPELINE_JS = {
             'rb/js/models/screenshotReviewableModel.js',
             'rb/js/models/textBasedCommentBlockModel.js',
             'rb/js/models/textBasedReviewableModel.js',
+            'rb/js/models/markdownReviewableModel.js',
             'rb/js/views/abstractCommentBlockView.js',
             'rb/js/views/abstractReviewableView.js',
             'rb/js/views/fileAttachmentCommentBlockView.js',
