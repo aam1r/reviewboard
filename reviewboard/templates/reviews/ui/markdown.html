@@ -8,7 +8,14 @@
 {{block.super}}
 
 <script language="javascript">
-    $(document).ready(function() { });
+    $(document).ready(function() {
+        var view = new RB.MarkdownReviewableView({
+            model: new RB.MarkdownReviewable({})
+        });
+
+        view.render();
+        $('#markdown-review-ui-container').append(view.$el);
+    });
 </script>
 {% endblock %}
 
