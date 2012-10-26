@@ -5,5 +5,5 @@ RB.MarkdownReviewable = RB.AbstractReviewable.extend({
     defaults: _.defaults({
         caption: '',
         attachmentID: null
-    }, RB.AbstractReviewable.prototype.defaults),
+    }, RB.AbstractReviewable.prototype.defaults)
 });

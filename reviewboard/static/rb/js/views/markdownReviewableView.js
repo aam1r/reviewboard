@@ -15,7 +15,6 @@ RB.MarkdownReviewableView = RB.AbstractReviewableView.extend({
      * Renders the view.
      */
     renderContent: function() {
-        var self = this;
         return this;
-    },
+    }
 });
