@@ -134,6 +134,13 @@ class DefaultReviewer(models.Model):
         return self.name
 
 
+class Markdown(models.Model):
+    """
+    A Markdown file attachment on a review request.
+    """
+    pass
+
+
 class Screenshot(models.Model):
     """
     A screenshot associated with a review request.

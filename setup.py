@@ -163,6 +163,7 @@ setup(name=PACKAGE_NAME,
           'python-memcached',
           'pytz',
           'recaptcha-client',
+          'markdown'
       ],
       dependency_links = [
           "http://downloads.reviewboard.org/mirror/",
