@@ -11,6 +11,10 @@ RB.MarkdownReviewableView = RB.AbstractReviewableView.extend({
         RB.AbstractReviewableView.prototype.initialize.call(this);
     },
 
+    rendered: function() {
+        return $('<div/>').html(this.model.get('rendered')).text();
+    },
+
     /*
      * Renders the view.
      */
