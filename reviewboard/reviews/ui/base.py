@@ -1,4 +1,5 @@
 import logging
+import os
 
 from django.shortcuts import render_to_response
 from django.template.context import RequestContext
@@ -153,6 +154,14 @@ class FileAttachmentReviewUI(ReviewUI):
     def for_type(cls, attachment):
         """Returns the handler that is the best fit for provided mimetype."""
         mimetype = mimeparse.parse_mime_type(attachment.mimetype)
+
+        # Override the mimetype if mimeparse is known to misinterpret this
+        # type of file as `octet-stream`
+        extension = os.path.splitext(attachment.filename)[1]
+
+        if extension in MIMETYPE_EXTENSIONS:
+            mimetype = MIMETYPE_EXTENSIONS[extension]
+
         score, handler = cls.get_best_handler(mimetype)
 
         if handler:
@@ -198,3 +207,8 @@ def unregister_ui(review_ui):
         logging.error('Failed to unregister missing review UI %r' %
                       review_ui)
         raise ValueError('This review UI was not previously registered')
+
+
+MIMETYPE_EXTENSIONS = {
+    '.md': (u'text', u'x-markdown', {}),
+}
