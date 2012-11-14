@@ -4,9 +4,8 @@ import StringIO
 from reviewboard.reviews.ui.base import ReviewUI
 
 
-class MarkdownReviewUI(ReviewUI):
-    model = None
-    comment_model = None
+class MarkdownReviewUI(FileAttachmentReviewUI):
+    supported_mimetypes = ['text/x-markdown']
     template_name = 'reviews/ui/markdown.html'
     object_key = 'markdown'
 
