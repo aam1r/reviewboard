@@ -1,4 +1,5 @@
 from django.conf.urls.defaults import patterns, url
+from reviewboard.reviews.ui.base import review_ui_urlpatterns
 
 
 urlpatterns = patterns('reviewboard.reviews.views',
@@ -67,3 +68,6 @@ urlpatterns = patterns('reviewboard.reviews.views',
     url(r'^search/$', 'search', name="search"),
 )
 
+
+# Review UI
+urlpatterns += review_ui_urlpatterns()

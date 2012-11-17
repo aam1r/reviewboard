@@ -22,6 +22,7 @@ class ReviewUI(object):
     allow_inline = False
     template_name = None
     object_key = 'obj'
+    urlpatterns = None
 
     def __init__(self, review_request, obj):
         self.review_request = review_request
@@ -207,3 +208,13 @@ def unregister_ui(review_ui):
         logging.error('Failed to unregister missing review UI %r' %
                       review_ui)
         raise ValueError('This review UI was not previously registered')
+
+
+def review_ui_urlpatterns():
+    urlpatterns = []
+
+    for review_ui in _file_attachment_review_uis:
+        if review_ui.urlpatterns != None:
+            urlpatterns += review_ui.urlpatterns
+
+    return urlpatterns

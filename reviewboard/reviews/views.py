@@ -1352,6 +1352,26 @@ def review_file_attachment(request,
 
 
 @check_login_required
+def fetch_rendered_attachment(request,
+                              review_request_id,
+                              file_attachment_id,
+                              local_site_name=None):
+    review_request, response = \
+        _find_review_request(request, review_request_id, local_site_name)
+
+    if not review_request:
+        return response
+
+    file_attachment = get_object_or_404(FileAttachment, pk=file_attachment_id)
+    review_ui = file_attachment.review_ui
+
+    if review_ui:
+        return HttpResponse(review_ui.render(), mimetype='text/plain')
+    else:
+        raise Http404
+
+
+@check_login_required
 def view_screenshot(request,
                     review_request_id,
                     screenshot_id,
