@@ -207,8 +207,3 @@ def unregister_ui(review_ui):
         logging.error('Failed to unregister missing review UI %r' %
                       review_ui)
         raise ValueError('This review UI was not previously registered')
-
-
-MIMETYPE_EXTENSIONS = {
-    '.md': (u'text', u'x-markdown', {}),
-}
