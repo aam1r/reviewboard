@@ -1953,7 +1953,7 @@ $.fn.fileAttachment = function() {
 
         self.find('.file-review-inline a')
             .click(function() {
-                showReviewUI();
+                showReviewUI($(this));
                 return false;
             });
 
@@ -1986,8 +1986,22 @@ $.fn.fileAttachment = function() {
                 .close();
         }
 
-        function showReviewUI() {
-            /* TODO: Display a lightbox and show the page. */
+        function showReviewUI(hyperlink) {
+            $.ajax({
+                type: 'GET',
+                url: hyperlink.attr('href') + 'rendered',
+                success: function(data, textStatus, jqXHR) {
+                    var dlg = $('<p/>')
+                        .css({
+                            'overflow': 'auto',
+                            'height': '500px'
+                        })
+                        .html(data)
+                        .modalBox({
+                            title: hyperlink.data('attachment-name')
+                        });
+                }
+            });
         }
 
         function processComments() {

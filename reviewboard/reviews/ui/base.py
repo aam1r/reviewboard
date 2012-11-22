@@ -210,11 +210,18 @@ def unregister_ui(review_ui):
         raise ValueError('This review UI was not previously registered')
 
 
-def review_ui_urlpatterns():
+def get_urlpatterns():
+    """Returns custom URL patterns set by Review UIs.
+
+    Review UIs can optionally set a 'urlpattern' property that is accessed
+    as an endpoint to get rendered content in the frontend. This endpoint
+    is used, for example, to display a Review UI inside a lightbox window
+    by getting the rendered content through AJAX.
+    """
     urlpatterns = []
 
     for review_ui in _file_attachment_review_uis:
-        if review_ui.urlpatterns != None:
+        if review_ui.urlpatterns:
             urlpatterns += review_ui.urlpatterns
 
     return urlpatterns

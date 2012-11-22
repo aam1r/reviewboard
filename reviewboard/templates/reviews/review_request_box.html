@@ -173,7 +173,12 @@
     <div class="file">
      <ul class="actions">
 {% if file.review_ui %}
-      <li class="{% if file.review_ui.allow_inline %}file-review-inline %}{% else %}file-review{% endif %}"><a href="{% url file_attachment review_request.pk file.pk %}">{% trans "Review" %}</a></li>
+      <li class="{% if file.review_ui.allow_inline %}file-review-inline %}{% else %}file-review{% endif %}">
+         <a href="{% url file_attachment review_request.pk file.pk %}"
+             data-attachment-name="{% if file.caption %}{{file.caption|escape}}{% else %}{{file.filename}}{% endif %}">
+             {% trans "Review" %}
+         </a>
+      </li>
 {% else %}
       <li class="file-add-comment"><a href="#">{% trans "Add Comment" %}</a></li>
 {% endif %}

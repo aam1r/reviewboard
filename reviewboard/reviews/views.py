@@ -1352,10 +1352,8 @@ def review_file_attachment(request,
 
 
 @check_login_required
-def fetch_rendered_attachment(request,
-                              review_request_id,
-                              file_attachment_id,
-                              local_site_name=None):
+def rendered_attachment(request, review_request_id, file_attachment_id,
+                        local_site_name=None):
     review_request, response = \
         _find_review_request(request, review_request_id, local_site_name)
 
