@@ -1989,15 +1989,15 @@ $.fn.fileAttachment = function() {
         function showReviewUI(hyperlink) {
             $.ajax({
                 type: 'GET',
-                url: hyperlink.attr('href') + 'rendered',
-                success: function(data, textStatus, jqXHR) {
+                url: hyperlink.attr('href') + '?inline=1',
+                success: function(data) {
+                    console.log(data);
                     var dlg = $('<p/>')
-                        .css({
-                            'overflow': 'auto',
-                            'height': '500px'
-                        })
+                        .css('overflow', 'auto')
                         .html(data)
                         .modalBox({
+                            stretchX: true,
+                            stretchY: true,
                             title: hyperlink.data('attachment-name')
                         });
                 }
