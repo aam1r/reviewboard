@@ -1987,20 +1987,15 @@ $.fn.fileAttachment = function() {
         }
 
         function showReviewUI(hyperlink) {
-            $.ajax({
-                type: 'GET',
-                url: hyperlink.attr('href') + '?inline=1',
-                success: function(data) {
-                    console.log(data);
-                    var dlg = $('<p/>')
-                        .css('overflow', 'auto')
-                        .html(data)
-                        .modalBox({
-                            stretchX: true,
-                            stretchY: true,
-                            title: hyperlink.data('attachment-name')
-                        });
-                }
+            $.get(hyperlink.attr('href') + '?inline=1', function(data) {
+                var dlg = $('<p/>')
+                    .css('overflow', 'auto')
+                    .html(data)
+                    .modalBox({
+                        stretchX: true,
+                        stretchY: true,
+                        title: hyperlink.data('attachment-name')
+                    });
             });
         }
 
