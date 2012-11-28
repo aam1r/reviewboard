@@ -1988,8 +1988,9 @@ $.fn.fileAttachment = function() {
 
         function showReviewUI(hyperlink) {
             $.get(hyperlink.attr('href') + '?inline=1', function(data) {
-                var dlg = $('<p/>')
+                var dlg = $('<div/>')
                     .css('overflow', 'auto')
+                    .appendTo('body') // Needed for scripts embedded in the HTML
                     .html(data)
                     .modalBox({
                         stretchX: true,
