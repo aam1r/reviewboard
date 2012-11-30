@@ -5,20 +5,11 @@ RB.MarkdownReviewableView = RB.AbstractReviewableView.extend({
     className: 'markdown-review-ui',
 
     /*
-     * Initializes the view.
-     */
-    initialize: function() {
-        RB.AbstractReviewableView.prototype.initialize.call(this);
-    },
-
-    rendered: function() {
-        return $('<div/>').html(this.model.get('rendered')).text();
-    },
-
-    /*
      * Renders the view.
      */
     renderContent: function() {
+        this.$el.html(this.model.get('rendered'));
+
         return this;
     }
 });
