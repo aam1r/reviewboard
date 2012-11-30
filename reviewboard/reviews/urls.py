@@ -1,5 +1,6 @@
 from django.conf.urls.defaults import patterns, url
-from reviewboard.reviews.ui.base import get_urlpatterns
+
+from reviewboard.reviews.ui.base import get_urlpatterns as get_review_ui_urlpatterns
 
 
 urlpatterns = patterns('reviewboard.reviews.views',
@@ -70,4 +71,4 @@ urlpatterns = patterns('reviewboard.reviews.views',
 
 
 # Review UIs
-urlpatterns += get_urlpatterns()
+urlpatterns += get_review_ui_urlpatterns()

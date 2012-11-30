@@ -1953,7 +1953,8 @@ $.fn.fileAttachment = function() {
 
         self.find('.file-review-inline a')
             .click(function() {
-                showReviewUI($(this));
+                showReviewUI($(this).attr('href'),
+                             $(this).data('attachment-name'));
                 return false;
             });
 
@@ -1986,8 +1987,8 @@ $.fn.fileAttachment = function() {
                 .close();
         }
 
-        function showReviewUI(hyperlink) {
-            $.get(hyperlink.attr('href') + '?inline=1', function(data) {
+        function showReviewUI(hyperlink, title) {
+            $.get(hyperlink + '?inline=1', function(data) {
                 var dlg = $('<div/>')
                     .css('overflow', 'auto')
                     .appendTo('body') // Needed for scripts embedded in the HTML
@@ -1995,7 +1996,7 @@ $.fn.fileAttachment = function() {
                     .modalBox({
                         stretchX: true,
                         stretchY: true,
-                        title: hyperlink.data('attachment-name')
+                        title: title
                     });
             });
         }
