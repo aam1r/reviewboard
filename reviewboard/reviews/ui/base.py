@@ -8,7 +8,7 @@ from django.utils.html import escape
 from django.utils.safestring import mark_safe
 import mimeparse
 
-from reviewboard.attachments.mimetypes import score_match
+from reviewboard.attachments.mimetypes import score_match, MIMETYPE_EXTENSIONS
 from reviewboard.diffviewer.models import DiffSet
 from reviewboard.reviews.models import FileAttachmentComment
 
@@ -207,8 +207,3 @@ def unregister_ui(review_ui):
         logging.error('Failed to unregister missing review UI %r' %
                       review_ui)
         raise ValueError('This review UI was not previously registered')
-
-
-MIMETYPE_EXTENSIONS = {
-    '.md': (u'text', u'x-markdown', {}),
-}
