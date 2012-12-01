@@ -14,6 +14,7 @@ RB.RegionCommentBlockView = RB.AbstractCommentBlockView.extend({
      * Initializes RegionCommentBlockView.
      */
     initialize: function() {
+        console.log('RB.RegionCommentBlockView initialized');
         this.on('change:x change:y change:width change:height',
                 this._updateDimensions, this);
     },

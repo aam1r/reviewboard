@@ -1,6 +1,7 @@
 RB.TextBasedCommentBlockView = RB.AbstractCommentBlockView.extend({
     className: 'selection',
 
+<<<<<<< HEAD
     renderContent: function() {
         this._$ghostCommentFlag = $("<span/>")
             .addClass("commentflag")
@@ -29,4 +30,24 @@ RB.TextBasedCommentBlockView = RB.AbstractCommentBlockView.extend({
     _updateCount: function() {
         this._$count.text(this.model.get('count'));
     }
+=======
+    initialize: function() {
+        console.log('initialize in textbasecommentblockview');
+    },
+
+    renderContent: function() {
+        console.log('render content in textbasedcommentblockview');
+
+        this._$flag = $('<div/>')
+            .addClass('selection-flag')
+            .appendTo(this.$el);
+    },
+
+    positionCommentDlg: function(commentDlg) {
+        commentDlg.positionToSide(this._$flag, {
+            side: 'b',
+            fitOnScreen: true
+        });
+    },
+>>>>>>> d1142b9... Introduce "text-based comment block" for commenting
 });
