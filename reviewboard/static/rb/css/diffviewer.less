@@ -288,59 +288,59 @@
     padding: 2px 0 2px 2px;
     vertical-align: top;
   }
+}
 
-  .commentflag {
-    .border-radius(@comment-flag-border-radius);
-    height: 20px;
-    left: -0.7em;
-    margin-top: -0.3em;
-    position: absolute;
-    width: 1.6em;
-  }
+.commentflag {
+  .border-radius(@comment-flag-border-radius);
+  height: 20px;
+  left: -0.7em;
+  margin-top: -0.3em;
+  position: absolute;
+  width: 1.6em;
+}
 
-  .commentflag-shadow {
-    .border-radius(@comment-flag-border-radius);
-    .opacity(10);
-    background-color: black;
-    border: 1px solid black;
-    bottom: 0;
-    left: 0.2em;
-    position: absolute;
-    right: 0;
-    top: 0.2em;
-    width: 100%;
-  }
+.commentflag-shadow {
+  .border-radius(@comment-flag-border-radius);
+  .opacity(10);
+  background-color: black;
+  border: 1px solid black;
+  bottom: 0;
+  left: 0.2em;
+  position: absolute;
+  right: 0;
+  top: 0.2em;
+  width: 100%;
+}
 
-  .commentflag-inner {
-    .border-radius(@comment-flag-border-radius);
-    .opacity(95);
-    background-color: @comment-flag-color;
-    border: 1px solid @comment-flag-border-color;
-    bottom: 0.2em;
-    cursor: pointer;
-    font-size: 90%;
-    font-weight: normal;
-    left: 0;
-    line-height: 1.7em;
-    position: absolute;
-    right: 0.2em;
-    text-align: center;
-    top: 0;
-    vertical-align: top;
-    width: 100%;
-    z-index: @z-index-deco;
+.commentflag-inner {
+  .border-radius(@comment-flag-border-radius);
+  .opacity(95);
+  background-color: @comment-flag-color;
+  border: 1px solid @comment-flag-border-color;
+  bottom: 0.2em;
+  cursor: pointer;
+  font-size: 90%;
+  font-weight: normal;
+  left: 0;
+  line-height: 1.7em;
+  position: absolute;
+  right: 0.2em;
+  text-align: center;
+  top: 0;
+  vertical-align: top;
+  width: 100%;
+  z-index: @z-index-deco;
 
-    span {
-      background: transparent !important;
-    }
+  span {
+    background: transparent !important;
   }
 }
 
-.selected .commentflag .commentflag-inner {
+.commentflag .commentflag-inner {
   background-color: @comment-flag-color;
 }
 
-.selected .commentflag .commentflag-inner,
+.commentflag .commentflag-inner,
 .commentflag .commentflag-inner:hover {
   background-color: @comment-flag-hover-color;
 }
@@ -350,7 +350,7 @@
   border-color: @comment-flag-draft-border-color;
 }
 
-.selected .commentflag.draft .commentflag-inner,
+.commentflag.draft .commentflag-inner,
 .commentflag.draft .commentflag-inner:hover {
   background-color: @comment-flag-draft-hover-color;
 }

@@ -20,20 +20,25 @@ RB.TextBasedReviewableView = RB.FileAttachmentReviewableView.extend({
 
     renderContent: function() {
         this._$rendered = $(this.model.get('rendered'));
+        this._$wrappedComments = '';
 
         this._applyCommentWrapper();
-        this.$el.html(this._$rendered);
+        this.$el.html(this._$wrappedComments);
 
         return this;
     },
 
     _applyCommentWrapper: function() {
+        var self = this;
         var child_id = 0;
 
         this._$rendered.each(function() {
-            $(this)
+            var wrapper = $('<div />')
                 .attr('class', 'rendered-comment')
-                .attr('data-child-id', child_id++);
+                .attr('data-child-id', child_id++)
+                .append($(this));
+
+            self._$wrappedComments += wrapper[0].outerHTML;
         });
     },
 
@@ -41,7 +46,7 @@ RB.TextBasedReviewableView = RB.FileAttachmentReviewableView.extend({
         var child_id = commentBlockView.model.get('child_id');
         var child = this.$el.find("[data-child-id='" + child_id + "']");
 
-        child.append(commentBlockView.$el);
+        child.prepend(commentBlockView.$el);
     },
 
     _onMouseEnter: function(evt) {
