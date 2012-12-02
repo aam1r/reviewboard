@@ -12,7 +12,7 @@ RB.TextCommentBlock = RB.FileAttachmentCommentBlock.extend({
      * them back to integers where appropriate.
      */
     parse: function(fields) {
-        fields.id = parseInt(fields.child_id, 10) || undefined;
+        fields.child_id = parseInt(fields.child_id, 10) || undefined;
         return fields;
     }
 });
