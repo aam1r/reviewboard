@@ -19,36 +19,22 @@ RB.TextBasedReviewableView = RB.FileAttachmentReviewableView.extend({
     },
 
     renderContent: function() {
-        var self = this;
-
         this._$rendered = $(this.model.get('rendered'));
-        this._$child_id = 0;
 
-        this._$rendered.each(function() {
-            self._applyCommentWrapper(this);
-            self._recursiveChildWrapper(this);
-        });
-
+        this._applyCommentWrapper();
         this.$el.html(this._$rendered);
 
         return this;
     },
 
-    _recursiveChildWrapper: function(parentElement) {
-        var self = this;
+    _applyCommentWrapper: function() {
+        var child_id = 0;
 
-        $(parentElement).children().each(function() {
-            self._applyCommentWrapper(this);
-            self._recursiveChildWrapper(this);
+        this._$rendered.each(function() {
+            $(this)
+                .attr('class', 'rendered-comment')
+                .attr('data-child-id', child_id++);
         });
-    },
-
-    _applyCommentWrapper: function(child) {
-        var self = this;
-
-        $(child)
-            .attr('class', 'rendered-comment')
-            .attr('data-child-id', self._$child_id++);
     },
 
     _addCommentBlock: function(commentBlockView) {
@@ -69,7 +55,7 @@ RB.TextBasedReviewableView = RB.FileAttachmentReviewableView.extend({
     },
 
     _onClick: function(evt) {
-        var wrapper = $(evt.target);
+        var wrapper = $(evt.target).closest('.rendered-comment');
 
         if (wrapper.has('.commentflag').length == 0) {
             var child_id = wrapper.data('child-id');
