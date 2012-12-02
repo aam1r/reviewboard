@@ -19,34 +19,43 @@ RB.TextBasedReviewableView = RB.FileAttachmentReviewableView.extend({
     },
 
     renderContent: function() {
-        this._$rendered = $(this.model.get('rendered'));
-        this._$wrappedComments = '';
+        var self = this;
 
-        this._applyCommentWrapper();
-        this.$el.html(this._$wrappedComments);
+        this._$rendered = $(this.model.get('rendered'));
+        this._$child_id = 0;
+
+        this._$rendered.each(function() {
+            self._applyCommentWrapper(this);
+            self._recursiveChildWrapper(this);
+        });
+
+        this.$el.html(this._$rendered);
 
         return this;
     },
 
-    _applyCommentWrapper: function() {
+    _recursiveChildWrapper: function(parentElement) {
         var self = this;
-        var child_id = 0;
 
-        this._$rendered.each(function() {
-            var wrapper = $('<div />')
-                .attr('class', 'rendered-comment')
-                .attr('data-child-id', child_id++)
-                .append($(this));
-
-            self._$wrappedComments += wrapper[0].outerHTML;
+        $(parentElement).children().each(function() {
+            self._applyCommentWrapper(this);
+            self._recursiveChildWrapper(this);
         });
+    },
+
+    _applyCommentWrapper: function(child) {
+        var self = this;
+
+        $(child)
+            .attr('class', 'rendered-comment')
+            .attr('data-child-id', self._$child_id++);
     },
 
     _addCommentBlock: function(commentBlockView) {
         var child_id = commentBlockView.model.get('child_id');
         var child = this.$el.find("[data-child-id='" + child_id + "']");
 
-        child.prepend(commentBlockView.$el);
+        child.append(commentBlockView.$el);
     },
 
     _onMouseEnter: function(evt) {
@@ -60,7 +69,7 @@ RB.TextBasedReviewableView = RB.FileAttachmentReviewableView.extend({
     },
 
     _onClick: function(evt) {
-        var wrapper = $(evt.target).closest('.rendered-comment');
+        var wrapper = $(evt.target);
 
         if (wrapper.has('.commentflag').length == 0) {
             var child_id = wrapper.data('child-id');
