@@ -1,9 +1,9 @@
 RB.TextCommentBlock = RB.FileAttachmentCommentBlock.extend({
     defaults: _.defaults({
-        id: null
+        child_id: null
     }, RB.FileAttachmentCommentBlock.prototype.defaults),
 
-    serializedFields: ['id'],
+    serializedFields: ['child_id'],
 
     /*
      * Parses the incoming attributes for the comment block.
@@ -12,7 +12,7 @@ RB.TextCommentBlock = RB.FileAttachmentCommentBlock.extend({
      * them back to integers where appropriate.
      */
     parse: function(fields) {
-        fields.id = parseInt(fields.id, 10) || undefined;
+        fields.id = parseInt(fields.child_id, 10) || undefined;
         return fields;
     }
 });
