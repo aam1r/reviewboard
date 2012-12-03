@@ -19,6 +19,13 @@ RB.TextBasedCommentBlockView = RB.AbstractCommentBlockView.extend({
         this._updateCount();
     },
 
+    positionCommentDlg: function(commentDlg) {
+        commentDlg.positionToSide(this._$ghostCommentFlag, {
+            side: 'r',
+            fitOnScreen: true
+        });
+    },
+
     _updateCount: function() {
         this._$count.text(this.model.get('count'));
     }
