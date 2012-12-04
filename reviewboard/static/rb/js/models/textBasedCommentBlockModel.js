@@ -1,3 +1,9 @@
+/*
+ * Represents the comments on an element in a text-based file attachment.
+ *
+ * TextCommentBlock deals with creating and representing comments
+ * that exist on a specific element of some content.
+ */
 RB.TextCommentBlock = RB.FileAttachmentCommentBlock.extend({
     defaults: _.defaults({
         child_id: null
