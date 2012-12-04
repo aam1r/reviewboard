@@ -10,9 +10,7 @@ RB.TextBasedReviewableView = RB.FileAttachmentReviewableView.extend({
     commentBlockView: RB.TextBasedCommentBlockView,
 
     events: {
-        'mouseenter .rendered-comment': '_onMouseEnter',
-        'mouseleave .rendered-comment': '_onMouseLeave',
-        'click .rendered-comment': '_onClick'
+        'click .text-review-ui-container': '_onClick'
     },
 
     /*
@@ -52,7 +50,7 @@ RB.TextBasedReviewableView = RB.FileAttachmentReviewableView.extend({
 
         this._$rendered.each(function() {
             var wrapper = $('<div />')
-                .attr('class', 'rendered-comment')
+                .attr('class', 'text-review-ui-container')
                 .attr('data-child-id', child_id++)
                 .append($(this));
 
@@ -70,22 +68,12 @@ RB.TextBasedReviewableView = RB.FileAttachmentReviewableView.extend({
         child.prepend(commentBlockView.$el);
     },
 
-    _onMouseEnter: function(evt) {
-        var wrapper = $(evt.target).closest('.rendered-comment');
-        wrapper.css('background-color', '#F0F0F0');
-    },
-
-    _onMouseLeave: function(evt) {
-        var wrapper = $(evt.target).closest('.rendered-comment');
-        wrapper.css('background-color', 'white');
-    },
-
     /*
      * When an element is clicked, display the comment dialog if the element
      * has no comments so far.
      */
     _onClick: function(evt) {
-        var wrapper = $(evt.target).closest('.rendered-comment');
+        var wrapper = $(evt.target).closest('.text-review-ui-container');
 
         if (wrapper.has('.commentflag').length == 0) {
             var child_id = wrapper.data('child-id');
