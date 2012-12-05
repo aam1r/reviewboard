@@ -1,6 +1,6 @@
 from django.conf.urls.defaults import patterns, url
 
-from reviewboard.reviews.ui.base import get_urlpatterns as get_review_ui_urlpatterns
+from reviewboard.reviews.ui.base import get_review_ui_urlpatterns
 
 
 urlpatterns = patterns('reviewboard.reviews.views',

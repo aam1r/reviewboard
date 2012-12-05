@@ -211,7 +211,7 @@ def unregister_ui(review_ui):
         raise ValueError('This review UI was not previously registered')
 
 
-def get_urlpatterns():
+def get_review_ui_urlpatterns():
     """Returns custom URL patterns set by Review UIs.
 
     Review UIs can optionally set a 'urlpattern' property that is accessed
