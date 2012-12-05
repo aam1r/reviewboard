@@ -11,9 +11,10 @@
     $(document).ready(function() {
         var view = new RB.MarkdownReviewableView({
             model: new RB.MarkdownReviewable({
-                attachmentID: '{{markdown.id}}',
                 caption: '{{caption|escapejs}}',
-                rendered: '{{review_ui.render|escapejs}}'
+                fileAttachmentID: '{{markdown.id}}',
+                rendered: '{{review_ui.render|escapejs}}',
+                serializedComments: {{review_ui.get_comments_json}}
             })
         });
 

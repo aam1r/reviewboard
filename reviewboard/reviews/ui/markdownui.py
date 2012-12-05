@@ -17,3 +17,12 @@ class MarkdownReviewUI(FileAttachmentReviewUI):
         buffer.close()
 
         return rendered
+
+    def serialize_comments(self, comments):
+        result = {}
+
+        for comment in comments:
+            result.setdefault(comment.extra_data['child_id'], []).append(
+                    self.serialize_comment(comment))
+
+        return result

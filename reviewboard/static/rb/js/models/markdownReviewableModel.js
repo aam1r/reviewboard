@@ -1,10 +1,8 @@
 /*
  * Provides review capabilities for Markdown files.
  */
-RB.MarkdownReviewable = RB.AbstractReviewable.extend({
+RB.MarkdownReviewable = RB.TextBasedReviewable.extend({
     defaults: _.defaults({
-        caption: '',
-        rendered: '',
-        attachmentID: null
-    }, RB.AbstractReviewable.prototype.defaults)
+        rendered: ''
+    }, RB.TextBasedReviewable.prototype.defaults)
 });
