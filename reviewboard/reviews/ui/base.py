@@ -1,5 +1,4 @@
 import logging
-import mimeparse
 import os
 
 from django.conf.urls.defaults import patterns
@@ -9,6 +8,7 @@ from django.utils import simplejson
 from django.utils.html import escape
 from django.utils.safestring import mark_safe
 from djblets.util.urlresolvers import DynamicURLResolver
+import mimeparse
 
 from reviewboard.attachments.mimetypes import score_match
 from reviewboard.diffviewer.models import DiffSet
