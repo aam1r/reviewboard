@@ -18,7 +18,6 @@ RB.TextBasedReviewableView = RB.FileAttachmentReviewableView.extend({
      */
     initialize: function() {
         RB.FileAttachmentReviewableView.prototype.initialize.call(this);
-
         this.on('commentBlockViewAdded', this._addCommentBlock, this);
     },
 
