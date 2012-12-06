@@ -30,10 +30,7 @@ RB.TextBasedReviewableView = RB.FileAttachmentReviewableView.extend({
      */
     renderContent: function() {
         this._$rendered = $(this.model.get('rendered'));
-        this._$wrappedComments = '';
-
         this._applyCommentWrapper();
-        this.$el.html(this._$wrappedComments);
 
         return this;
     },
@@ -45,16 +42,18 @@ RB.TextBasedReviewableView = RB.FileAttachmentReviewableView.extend({
      */
     _applyCommentWrapper: function() {
         var self = this,
-            child_id = 0;
+            child_id = 0,
+            wrapped_elements = $('<div/>');
 
         this._$rendered.each(function() {
             var wrapper = $('<div />')
                 .attr('class', 'text-review-ui-container')
                 .attr('data-child-id', child_id++)
-                .append($(this));
-
-            self._$wrappedComments += wrapper[0].outerHTML;
+                .append($(this))
+                .appendTo(wrapped_elements);
         });
+
+        this.$el.html(wrapped_elements);
     },
 
     /*
